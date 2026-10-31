@@ -3,9 +3,10 @@
 module Nmap;
 
 export {
-    const threshold: count = 20 &redef;
+    const threshold: count = 10 &redef;
+    const time_window: interval = 5 mins &redef;
 
-    global hits: table[string, addr] of count &default=0;
+    global hits: table[string, addr] of count &default=0 &write_expire=time_window;
     global notices: table[string, addr] of count &default=0;
 }
 
